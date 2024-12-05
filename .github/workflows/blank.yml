@@ -1,0 +1,14 @@
+env:
+  FIRST_NAME: John
+  FULL_NAME: ${{ env.FIRST_NAME }} Doe  # This works!
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    env:
+      GREETING: "Hello ${{ env.FIRST_NAME }}"  # This also works!
+    steps:
+      - name: Print names
+        run: |
+          echo $FULL_NAME
+          echo $GREETING
